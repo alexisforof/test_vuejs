@@ -14,17 +14,20 @@
         <input type="text" v-model="user">
         <p>Vous etes connecté avec : {{user}}</p>
 
-        <ul v-for="produit in produits">
+        <!-- <ul v-for="produit in produits">
             <li>{{produit}}</li>
             <button v-on:click="commander(produit)">Commander</button>
-        </ul>
+        </ul> -->
+        <h1>Liste produit</h1>
+        <fiche-produit v-for="produit in produits" v-bind:nom="produit" v-on:commande-passee="commander" role="commande"></fiche-produit>
 
-        <h2>Produit commande</h2>
-        <ul v-for="commands in command">
+        <h2 v-if="command.length > 0">Produit commande</h2>
+        <fiche-produit v-for="commands in command" v-bind:nom="commands" role="recap"></fiche-produit>
+        <!-- <ul v-for="commands in command">
             <li>{{commands}}</li>
-        </ul>
+        </ul> -->
     </div>
 
-    <script src="./index.vue"></script>
+    <script src="./index.js"></script>
 </body>
 </html>
