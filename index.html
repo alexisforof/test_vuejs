@@ -4,23 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vue js</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+
     <div id="app">
-        <h1>{{message}}</h1>
-        <input type="text" v-model="user">
-        <p>Vous etes connecté avec : {{user}}</p>
+        <!-- 
+            v-bind: permet de definir une valeur dans un attribut
+            Raccourci : :href="link"
+        -->
+        <a v-bind:href="link">{{message}}</a>
 
-        <h1>Liste produit</h1>
-        <fiche-produit v-for="produit in produits" v-bind:nom="produit" v-on:commande-passee="commander" role="commande"></fiche-produit>
+        <br><br>
+        
+        <!-- 
+            v-if permet de faire une condition
+            v-on:click permet d'écouter un événement au click dans note cas
+            Raccourci : @click="click"
+        -->
 
-        <h2 v-if="command.length > 0">Produit commande</h2>
-        <fiche-produit v-for="commands in command" v-bind:nom="commands" role="recap"></fiche-produit>
+        <div v-if="success" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <p>Bravo votre enregistrement à marché</p>
+            <span v-on:click="close" class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg class="fill-current h-6 w-6 text-gray-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+            </span>
+        </div>
+
+        <!-- <div v-else class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <p>Votre enregistrement n'a pas marché</p>
+        </div> -->
+
+        <br><br>
+
+        <!-- 
+            v-for permet de faire une boucle
+        -->
+        <ul>
+            <li v-for="person in persons">{{person}}</li>
+        </ul>
+
+        <br><br>
+
+        <!-- 
+            v-model permet de récupérer la valeur d'un input
+        -->
+        <input type="text" v-model:value="message" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+
+
+        
     </div>
 
-    <script src="./index.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

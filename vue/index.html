@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <input type="text" v-model="user">
+        <p>Vous etes connecté avec : {{user}}</p>
+
+        <h1>Liste produit</h1>
+        <fiche-produit v-for="produit in produits" v-bind:nom="produit" v-on:commande-passee="commander" role="commande"></fiche-produit>
+
+        <h2 v-if="command.length > 0">Produit commande</h2>
+        <fiche-produit v-for="commands in command" v-bind:nom="commands" role="recap"></fiche-produit>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
